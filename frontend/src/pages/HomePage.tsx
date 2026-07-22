@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, Radio, Trophy, Users } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Page, SectionTitle, TournamentCard } from "../components/UI";
 import { assets, tournaments } from "../data/platform";
@@ -36,7 +36,23 @@ export function HomePage() {
           </div>
         </div>
         <motion.div className="hero-panel" initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.7 }}>
-          <img src={assets.cricket} alt="Professional cricket stadium" />
+          <div className="hero-visual-ui">
+            <div>
+              <Trophy size={32} />
+              <span>Tournaments</span>
+              <strong>14 Active</strong>
+            </div>
+            <div>
+              <Radio size={32} />
+              <span>Live Scores</span>
+              <strong>8 Matches</strong>
+            </div>
+            <div>
+              <Users size={32} />
+              <span>Teams</span>
+              <strong>156</strong>
+            </div>
+          </div>
           <div className="floating-score">
             <span className="live-dot">Live</span>
             <strong>156/4</strong>
