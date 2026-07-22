@@ -15,13 +15,15 @@ import {
   Zap,
 } from "lucide-react";
 
+const assetPath = (name: string) => `${import.meta.env.BASE_URL}assets/${name}`;
+
 export const assets = {
-  cricket: "/assets/cricket-stadium.png",
-  football: "/assets/football-match.png",
-  basketball: "/assets/basketball-match.png",
-  volleyball: "/assets/volleyball-match.png",
-  publicSheet: "/assets/public-sheet.png",
-  dashboardSheet: "/assets/dashboard-sheet.png",
+  cricket: assetPath("cricket-stadium.png"),
+  football: assetPath("football-match.png"),
+  basketball: assetPath("basketball-match.png"),
+  volleyball: assetPath("volleyball-match.png"),
+  publicSheet: assetPath("public-sheet.png"),
+  dashboardSheet: assetPath("dashboard-sheet.png"),
 };
 
 export const navItems = [
