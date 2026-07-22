@@ -1,7 +1,6 @@
-import { Trophy } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
 import { Page } from "../components/UI";
-import { sports, tournaments } from "../data/platform";
+import { assets, sports, tournaments } from "../data/platform";
 import { InfoPanel, Metric, PageHero } from "./shared";
 
 export function SportDetailPage() {
@@ -13,11 +12,7 @@ export function SportDetailPage() {
     <Page>
       <PageHero title={`${sport.name} Operations`} text="Category detail page for discovery, rules, active tournaments, live scoring model, and registration routing." />
       <section className="detail-hero">
-        <div className={`detail-visual visual-${sport.color}`}>
-          <Trophy size={44} />
-          <strong>{sport.name}</strong>
-          <span>{sport.active} active tournaments</span>
-        </div>
+        <img src={sport.name === "Football" ? assets.football : sport.name === "Basketball" ? assets.basketball : assets.cricket} alt="" />
         <div>
           <span className={`status ${sport.color}`}>{sport.active} active tournaments</span>
           <h1>{sport.name}</h1>

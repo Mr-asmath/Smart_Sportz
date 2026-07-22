@@ -1,4 +1,3 @@
-import { Users } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
 import { Page } from "../components/UI";
 import { teams } from "../data/platform";
@@ -12,11 +11,7 @@ export function TeamDetailPage() {
     <Page>
       <PageHero title={team.name} text="Team profile page for roster, approvals, documents, payment status, certificates, and tournament history." />
       <section className="detail-hero">
-        <div className="detail-visual visual-emerald">
-          <Users size={44} />
-          <strong>{team.rank}</strong>
-          <span>{team.players} players</span>
-        </div>
+        <img src={team.image} alt="" />
         <div>
           <span className="status emerald">{team.rank}</span>
           <h1>{team.name}</h1>

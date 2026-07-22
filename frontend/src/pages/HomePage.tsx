@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
-import { BarChart3, CheckCircle2, Radio, Trophy, Users } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Page, SectionTitle, TournamentCard } from "../components/UI";
-import { tournaments } from "../data/platform";
+import { assets, tournaments } from "../data/platform";
 
 const fade = {
   initial: { opacity: 0, y: 24 },
@@ -36,11 +36,7 @@ export function HomePage() {
           </div>
         </div>
         <motion.div className="hero-panel" initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.7 }}>
-          <div className="hero-visual-ui">
-            <div><Trophy size={32} /><span>Tournaments</span><strong>14 Active</strong></div>
-            <div><Radio size={32} /><span>Live Scores</span><strong>8 Matches</strong></div>
-            <div><Users size={32} /><span>Teams</span><strong>156</strong></div>
-          </div>
+          <img src={assets.cricket} alt="Professional cricket stadium" />
           <div className="floating-score">
             <span className="live-dot">Live</span>
             <strong>156/4</strong>
@@ -62,11 +58,7 @@ export function HomePage() {
           </div>
         </motion.div>
         <motion.div className="visual-card" {...fade}>
-          <div className="workflow-visual">
-            <BarChart3 size={36} />
-            <strong>Unified Operations</strong>
-            <span>Registration, payments, live score, CMS, reports, and role based dashboards.</span>
-          </div>
+          <img src={assets.publicSheet} alt="Smart Sportz public UI contact sheet" />
         </motion.div>
       </section>
     </Page>

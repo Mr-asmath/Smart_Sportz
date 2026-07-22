@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Activity, ArrowRight, ChevronRight, Search, Settings, Sun, Moon, Trophy } from "lucide-react";
+import { ArrowRight, ChevronRight, Search, Settings, Sun, Moon } from "lucide-react";
 import type React from "react";
 import { Link, NavLink } from "react-router-dom";
 import { navItems } from "../data/platform";
@@ -155,10 +155,7 @@ export function TournamentCard({ item }: { item: any }) {
   return (
     <Link to={`/tournaments/${item.slug}`} className="click-card">
     <motion.article className="tournament-card" whileHover={{ y: -6, scale: 1.01 }} transition={{ type: "spring", stiffness: 260, damping: 22 }}>
-        <div className={`tournament-visual visual-${item.accent}`}>
-          <Trophy size={34} />
-          <span>{item.sport}</span>
-        </div>
+      <img src={item.image} alt="" />
       <div className="card-body">
         <span className={`status ${item.accent}`}>{item.status}</span>
         <h3>{item.name}</h3>
@@ -177,11 +174,7 @@ export function TournamentCard({ item }: { item: any }) {
 export function LiveMatchCard({ match }: { match: any }) {
   return (
     <Link className="live-card click-card" to={`/live/${match.id}`}>
-      <div className="live-media">
-        <Activity size={30} />
-        <strong>{match.sport}</strong>
-        <span className="live-dot">Live</span>
-      </div>
+      <div className="live-media"><img src={match.image} alt="" /><span className="live-dot">Live</span></div>
       <div>
         <p className="eyebrow">{match.tournament}</p>
         <h3>{match.home} vs {match.away}</h3>
