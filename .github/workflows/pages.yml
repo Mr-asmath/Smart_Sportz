@@ -1,4 +1,4 @@
-name: Deploy Smart Sportz Frontend
+name: Build and Publish Smart Sportz Frontend
 
 on:
   push:
@@ -7,33 +7,26 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 concurrency:
-  group: pages
-  cancel-in-progress: false
+  group: gh-pages
+  cancel-in-progress: true
 
 jobs:
-  build:
-    name: Build Vite App
+  publish:
+    name: Build Vite App and Publish gh-pages
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v5
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: 24
           cache: npm
           cache-dependency-path: frontend/package-lock.json
-
-      - name: Configure GitHub Pages
-        uses: actions/configure-pages@v6
-        with:
-          enablement: true
 
       - name: Install dependencies
         working-directory: frontend
@@ -43,19 +36,17 @@ jobs:
         working-directory: frontend
         run: npm run build
 
-      - name: Upload GitHub Pages artifact
-        uses: actions/upload-pages-artifact@v5
-        with:
-          path: frontend/dist
+      - name: Add GitHub Pages marker
+        run: touch frontend/dist/.nojekyll
 
-  deploy:
-    name: Deploy to GitHub Pages
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy
-        id: deployment
-        uses: actions/deploy-pages@v5
+      - name: Publish to gh-pages branch
+        run: |
+          cd frontend/dist
+          git init
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b gh-pages
+          git add .
+          git commit -m "Deploy Smart Sportz frontend"
+          git remote add origin "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
+          git push --force origin gh-pages
