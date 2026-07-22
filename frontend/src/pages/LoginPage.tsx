@@ -1,14 +1,13 @@
-import { Lock } from "lucide-react";
+import { Lock, ShieldCheck } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Page } from "../components/UI";
-import { assets } from "../data/platform";
 
 export function LoginPage({ recovery = false }: { recovery?: boolean }) {
   return (
     <Page className="auth-page">
       <div className="auth-card">
         <div className="auth-visual">
-          <img src={assets.cricket} alt="" />
+          <ShieldCheck size={48} />
           <h2>SmartSportz.in</h2>
           <p>Secure tournament operations for teams, athletes, managers, and admins.</p>
         </div>

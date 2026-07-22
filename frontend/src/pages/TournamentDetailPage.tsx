@@ -1,3 +1,4 @@
+import { Trophy } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
 import { Page } from "../components/UI";
 import { tournaments } from "../data/platform";
@@ -10,7 +11,11 @@ export function TournamentDetailPage() {
   return (
     <Page>
       <section className="detail-hero">
-        <img src={item.image} alt="" />
+        <div className={`detail-visual visual-${item.accent}`}>
+          <Trophy size={44} />
+          <strong>{item.sport}</strong>
+          <span>{item.teams}/{item.capacity} teams</span>
+        </div>
         <div>
           <span className={`status ${item.accent}`}>{item.status}</span>
           <h1>{item.name}</h1>

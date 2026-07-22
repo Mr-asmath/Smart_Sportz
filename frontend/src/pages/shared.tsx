@@ -1,7 +1,7 @@
-import { CheckCircle2, FileText } from "lucide-react";
+import { CheckCircle2, FileText, Users } from "lucide-react";
 import { Link } from "react-router-dom";
 import { DataTable, MetricCard, Page } from "../components/UI";
-import { assets, dashboardStats, liveMatches, logRows, tournaments } from "../data/platform";
+import { dashboardStats, liveMatches, logRows, tournaments } from "../data/platform";
 
 export function PageHero({ title, text }: { title: string; text: string }) {
   return (
@@ -56,8 +56,10 @@ export function TeamCard({ team }: { team: any }) {
   return (
     <Link to={`/teams/${team.slug}`} className="click-card">
       <article className="team-card">
-        <img src={team.image} alt="" />
-        <span>{team.rank}</span>
+        <div className="team-avatar">
+          <Users size={30} />
+          <span>{team.rank}</span>
+        </div>
         <h3>{team.name}</h3>
         <p>{team.sport} - {team.players} players</p>
         <div className="meter">
@@ -156,7 +158,10 @@ export function ListPanel({ title, items, to = "/admin/dashboard" }: { title: st
 export function AthleteProfile() {
   return (
     <section className="profile-panel">
-      <img src={assets.cricket} alt="" />
+      <div className="profile-visual">
+        <Users size={44} />
+        <strong>Captain</strong>
+      </div>
       <div>
         <span className="status emerald">Active</span>
         <h2>Arjun R. Sharma</h2>
