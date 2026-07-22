@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { CheckCircle2, Radio, Trophy, Users } from "lucide-react";
+import { BarChart3, CheckCircle2, Radio, ShieldCheck, Trophy, Users, Zap } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Page, SectionTitle, TournamentCard } from "../components/UI";
 import { assets, tournaments } from "../data/platform";
@@ -74,7 +74,25 @@ export function HomePage() {
           </div>
         </motion.div>
         <motion.div className="visual-card" {...fade}>
-          <img src={assets.publicSheet} alt="Smart Sportz public UI contact sheet" />
+          <div className="operations-visual">
+            <div className="ops-visual-header">
+              <span>Smart Sportz Control Layer</span>
+              <strong>Enterprise Operations</strong>
+            </div>
+            <div className="ops-visual-grid">
+              <div><Radio size={24} /><span>Live Score</span><b>Realtime</b></div>
+              <div><Trophy size={24} /><span>Fixtures</span><b>Auto</b></div>
+              <div><ShieldCheck size={24} /><span>RBAC</span><b>Secure</b></div>
+              <div><BarChart3 size={24} /><span>Reports</span><b>Export</b></div>
+            </div>
+            <div className="ops-flow">
+              <span>Registration</span>
+              <Zap size={18} />
+              <span>Payment</span>
+              <Zap size={18} />
+              <span>Live Match</span>
+            </div>
+          </div>
         </motion.div>
       </section>
     </Page>
