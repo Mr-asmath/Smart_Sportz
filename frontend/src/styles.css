@@ -92,6 +92,7 @@ img { max-width: 100%; display: block; }
 .live-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .tournament-card, .panel, .metric-card, .live-card, .team-card, .visual-card, .auth-card, .profile-panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg); box-shadow: var(--shadow); }
 .tournament-card { overflow: hidden; }
+.tournament-card img { height: 210px; width: 100%; object-fit: cover; }
 .card-body, .panel, .metric-card, .team-card { padding: 22px; }
 .tournament-card h3, .live-card h3, .team-card h3, .panel h3 { margin: 12px 0 8px; }
 .tournament-card p, .live-card p, .team-card p, .panel p { color: var(--muted); line-height: 1.55; }

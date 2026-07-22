@@ -14,16 +14,20 @@ import {
   Users,
   Zap,
 } from "lucide-react";
-
-const assetPath = (name: string) => `${import.meta.env.BASE_URL}assets/${name}`;
+import basketballMatch from "../assets/basketball-match.png";
+import cricketStadium from "../assets/cricket-stadium.png";
+import dashboardSheet from "../assets/dashboard-sheet.png";
+import footballMatch from "../assets/football-match.png";
+import publicSheet from "../assets/public-sheet.png";
+import volleyballMatch from "../assets/volleyball-match.png";
 
 export const assets = {
-  cricket: assetPath("cricket-stadium.png"),
-  football: assetPath("football-match.png"),
-  basketball: assetPath("basketball-match.png"),
-  volleyball: assetPath("volleyball-match.png"),
-  publicSheet: assetPath("public-sheet.png"),
-  dashboardSheet: assetPath("dashboard-sheet.png"),
+  cricket: cricketStadium,
+  football: footballMatch,
+  basketball: basketballMatch,
+  volleyball: volleyballMatch,
+  publicSheet,
+  dashboardSheet,
 };
 
 export const navItems = [

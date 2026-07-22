@@ -155,6 +155,7 @@ export function TournamentCard({ item }: { item: any }) {
   return (
     <Link to={`/tournaments/${item.slug}`} className="click-card">
     <motion.article className="tournament-card" whileHover={{ y: -6, scale: 1.01 }} transition={{ type: "spring", stiffness: 260, damping: 22 }}>
+      <img src={item.image} alt={`${item.name} visual`} />
       <div className="card-body">
         <span className={`status ${item.accent}`}>{item.status}</span>
         <h3>{item.name}</h3>
