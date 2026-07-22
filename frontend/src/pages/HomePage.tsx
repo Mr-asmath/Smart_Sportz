@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { BarChart3, CheckCircle2, Radio, ShieldCheck, Trophy, Users, Zap } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Page, SectionTitle, TournamentCard } from "../components/UI";
-import { assets, tournaments } from "../data/platform";
+import { tournaments } from "../data/platform";
 
 const fade = {
   initial: { opacity: 0, y: 24 },
