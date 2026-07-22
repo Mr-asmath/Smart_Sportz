@@ -36,7 +36,7 @@ export function HomePage() {
           </div>
         </div>
         <motion.div className="hero-panel" initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.7 }}>
-          <img src={assets.cricket} alt="Professional cricket stadium" />
+          <img className="hero-image" src={assets.cricket} alt="Smart Sportz cricket stadium hero" />
           <div className="floating-score">
             <span className="live-dot">Live</span>
             <strong>156/4</strong>
