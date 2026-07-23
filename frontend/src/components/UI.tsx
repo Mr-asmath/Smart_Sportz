@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
-import { ArrowRight, ChevronRight, Search, Settings, Sun, Moon } from "lucide-react";
+import { ArrowRight, ChevronRight, Moon, Search, Settings, Sun } from "lucide-react";
+import { useEffect, useState } from "react";
 import type React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { navItems } from "../data/platform";
 
 export function Page({ children, className = "" }: { children: React.ReactNode; className?: string }) {
@@ -19,30 +20,67 @@ export function Page({ children, className = "" }: { children: React.ReactNode; 
 }
 
 export function PublicHeader({ darkMode, setDarkMode }: { darkMode: boolean; setDarkMode: (value: boolean) => void }) {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [location.pathname]);
+
   return (
-    <header className="site-header">
-      <Link to="/" className="brand">
-        <span className="brand-mark">S</span>
-        <span>SmartSportz.in</span>
-      </Link>
-      <nav className="site-nav">
+    <header className={`site-header ${menuOpen ? "menu-open" : ""}`}>
+      <div className="header-row">
+        <Link to="/" className="brand">
+          <span className="brand-mark">S</span>
+          <span>SmartSportz.in</span>
+        </Link>
+        <nav className="site-nav">
+          {navItems.slice(0, 7).map((item) => (
+            <NavLink key={item.path} to={item.path}>
+              {item.label}
+            </NavLink>
+          ))}
+        </nav>
+        <div className="header-actions">
+          <div className="search-pill">
+            <Search size={16} />
+            <span>Search events...</span>
+          </div>
+          <button className="icon-btn" onClick={() => setDarkMode(!darkMode)} title="Toggle dark mode">
+            {darkMode ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
+          <Link to="/login" className="btn btn-secondary desktop-action">Login</Link>
+          <Link to="/tournaments/mumbai-premier-bash/register" className="btn btn-primary desktop-action">Register</Link>
+          <button
+            className="icon-btn mobile-menu-btn"
+            type="button"
+            aria-expanded={menuOpen}
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            onClick={() => setMenuOpen((value) => !value)}
+          >
+            <span className={`menu-glyph ${menuOpen ? "is-open" : ""}`} aria-hidden="true">
+              <span />
+              <span />
+              <span />
+            </span>
+          </button>
+        </div>
+      </div>
+      <nav className="mobile-menu" aria-label="Mobile navigation">
+        <div className="mobile-search">
+          <Search size={16} />
+          <span>Search events...</span>
+        </div>
         {navItems.slice(0, 7).map((item) => (
           <NavLink key={item.path} to={item.path}>
             {item.label}
           </NavLink>
         ))}
-      </nav>
-      <div className="header-actions">
-        <div className="search-pill">
-          <Search size={16} />
-          <span>Search events...</span>
+        <div className="mobile-actions">
+          <Link to="/login" className="btn btn-secondary">Login</Link>
+          <Link to="/tournaments/mumbai-premier-bash/register" className="btn btn-primary">Register</Link>
         </div>
-        <button className="icon-btn" onClick={() => setDarkMode(!darkMode)} title="Toggle dark mode">
-          {darkMode ? <Sun size={18} /> : <Moon size={18} />}
-        </button>
-        <Link to="/login" className="btn btn-secondary">Login</Link>
-        <Link to="/tournaments/mumbai-premier-bash/register" className="btn btn-primary">Register</Link>
-      </div>
+      </nav>
     </header>
   );
 }
